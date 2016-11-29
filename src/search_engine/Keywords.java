@@ -25,8 +25,8 @@ public class Keywords {
 					html.toLowerCase().matches("name="description" content=") ||
 					html.toLowerCase().matches("name="keywords" content=") {
 
-					keywords = ;  /* εδω παιρνουμε τα keywords απο τα strings
-									 που επαληθεουν τις παραπανω συνθηκες */
+					keywords = ;  /* Γ¥Γ¤ΓΉ Γ°Γ΅Γ©Γ±Γ­Γ―ΓµΓ¬Γ¥ Γ΄Γ΅ keywords Γ΅Γ°Γ― Γ΄Γ΅ strings
+									 Γ°Γ―Γµ Γ¥Γ°Γ΅Γ«Γ§Γ¨Γ¥Γ―ΓµΓ­ Γ΄Γ©Γ² Γ°Γ΅Γ±Γ΅Γ°Γ΅Γ­ΓΉ Γ³ΓµΓ­Γ¨Γ§ΓªΓ¥Γ² */
 
 				} /* end if */
 
