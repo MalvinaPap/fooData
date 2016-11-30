@@ -4,7 +4,7 @@ public class Split {
 
 	public static void getWords() {
 
-		String str = "<meta name=\"keywords\" content=\"Ελαιόλαδο, λάδι, Καλαμάτα, εξαιρετικά παρθένο ελαιόλαδο, ΠΟΠ Καλαμάτας, Ελαιοχώρι\"";
+		String str = "<meta name=\"keywords\" content=\"Γ…Γ«Γ΅Γ©ΓΌΓ«Γ΅Γ¤Γ―, Γ«ΓΓ¤Γ©, ΓΓ΅Γ«Γ΅Γ¬ΓΓ΄Γ΅, Γ¥Γ®Γ΅Γ©Γ±Γ¥Γ΄Γ©ΓªΓ Γ°Γ΅Γ±Γ¨ΓΓ­Γ― Γ¥Γ«Γ΅Γ©ΓΌΓ«Γ΅Γ¤Γ―, ΓΓΓ ΓΓ΅Γ«Γ΅Γ¬ΓΓ΄Γ΅Γ², Γ…Γ«Γ΅Γ©Γ―Γ·ΓΎΓ±Γ©\"";
 
 		for (String retval: str.split("\"")) {
 		         System.out.println(retval);
