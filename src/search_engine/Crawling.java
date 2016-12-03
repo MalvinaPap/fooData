@@ -2,10 +2,17 @@
 package search_engine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.net.URL;
 import java.net.MalformedURLException;
-/*import java.net.URLConnection;
-import java.util.ArrayList; */
+import java.net.URLConnection;
+import java.util.ArrayList; 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -16,13 +23,51 @@ public class Crawling {
 	}
 	
 	
-	
-	
-	public static HashMap<Integer,URL> crawlUrl() {                     /*Η μέθοδος θα χειρίζεται τον crawler και θα επιστρεφει τα αποτελέσματα του σε μορφή */
-		                                                                /*hashmap */
-		HashMap<Integer,URL> map = new HashMap<>();
-		return map;
+	public static HashMap<Integer,String> getDatabase() throws SQLException{
+		String url = "jdbc:mysql://localhost:3306/foodatab";
+		String username = "root";
+		String password = "123456789";
+		int id = 1;
+
+		System.out.println("Connecting database...");
+
+		try (Connection connection = DriverManager.getConnection(url, username, password)) {
+		    System.out.println("Database connected!");
+		    Statement stmt = null;
+		    String query = "SELECT * FROM foodatab.urls u;";
+		    HashMap<Integer,String> urls = new HashMap<>();
+		    try {
+		        stmt = connection.createStatement();
+		        ResultSet rs = stmt.executeQuery(query);
+		        
+	        	 while (rs.next()) {
+	        		 
+	        		 String a = rs.getString("urls");
+	        		 urls.put(id,a);
+	        		 ++id;
+			        }
+	        	 return urls; 
+		    } catch (SQLException e ) {
+		    	throw new IllegalStateException("problem!", e);
+		    } finally {
+		        if (stmt != null) { stmt.close(); }
+		    }
+		} catch (SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
 	
 	public static HashMap<Integer,String> crawlHtml() {                 /*Η μέθοδος θα χειρίζεται τον crawler και θα επιστρεφει τα αποτελέσματα του σε μορφή */
 		HashMap<Integer,String> map = new HashMap<>();						/*hashmap */
@@ -32,7 +77,7 @@ public class Crawling {
 	
 	
 	
-   public static HashMap<Integer,URL> returnUrls() throws MalformedURLException   {       /*not permanent, just a test method*/
+	public static HashMap<Integer,URL> returnUrls() throws MalformedURLException   {       /*not permanent, just a test method*/
 		
 		
 		HashMap<Integer,URL> map = new HashMap<>();
