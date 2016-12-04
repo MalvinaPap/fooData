@@ -23,7 +23,8 @@ public class Crawling {
 	}
 	
 	
-	public static HashMap<Integer,String> getDatabase() throws SQLException{
+	public static HashMap<Integer,URL> getDatabase() throws SQLException, MalformedURLException {
+		
 		String url = "jdbc:mysql://localhost:3306/foodatab";
 		String username = "root";
 		String password = "123456789";
@@ -35,23 +36,29 @@ public class Crawling {
 		    System.out.println("Database connected!");
 		    Statement stmt = null;
 		    String query = "SELECT * FROM foodatab.urls u;";
-		    HashMap<Integer,String> urls = new HashMap<>();
+		    HashMap<Integer,URL> urls = new HashMap<>();
 		    try {
 		        stmt = connection.createStatement();
 		        ResultSet rs = stmt.executeQuery(query);
-		        
+		        URL url1;
 	        	 while (rs.next()) {
 	        		 
 	        		 String a = rs.getString("urls");
-	        		 urls.put(id,a);
+	        		 url1 = new URL(a);
+	        		 urls.put(id,url1);
 	        		 ++id;
 			        }
-	        	 return urls; 
+	        	 
+	        	
 		    } catch (SQLException e ) {
 		    	throw new IllegalStateException("problem!", e);
-		    } finally {
-		        if (stmt != null) { stmt.close(); }
+		    }  catch (MalformedURLException e) {
+				System.out.println("unproper URL insertion");
+		    } finally { if (stmt != null) { stmt.close(); }
 		    }
+		    
+		    return urls; 
+		    
 		} catch (SQLException e) {
 		    throw new IllegalStateException("Cannot connect the database!", e);
 		}
