@@ -16,7 +16,7 @@ public class Search {
 	 * 
 	 */
 	public Search() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -26,19 +26,26 @@ public class Search {
 	public static void main(String[] args) throws SQLException {
 		
 		Inputs userInput = new Inputs();
-		String keyword = userInput.input();
+		String keyword= userInput.input();
 		
 		Database database = new Database();
-		List<String> res = database.selection(keyword);
-		if(res.size()>0){
-			for (int i = 0; i < res.size(); i++) {
-				System.out.println(res.get(i));
+		
+		while (!keyword.equals("end")){
+		
+			List<String> res = database.selection(keyword);
+			if(res.size()>0){
+				for (int i = 0; i < res.size(); i++) {
+					System.out.println(res.get(i));
+				}
 			}
-		}
-		else{
-			System.out.println("The keyword you inserted does not match");
+			else{
+				System.out.println("The keyword you inserted does not match");
+			}
+			keyword = userInput.input();
+		
 		}
 		
+	
 	}
 
 }
