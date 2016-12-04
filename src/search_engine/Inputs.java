@@ -21,13 +21,13 @@ public class Inputs {
 	public String input() {
 		String keyword;	
 		
-		do{
+		
 			
-			System.out.println("keywords or 'end' to terminate");	
-			@SuppressWarnings("resource")	
-			Scanner input = new Scanner(System.in);
-			keyword = input.next();
-		}while(!keyword.equals("end"));
+		System.out.println("keywords or 'end' to terminate");	/*παιρνει παντα το end για keyword*/
+		@SuppressWarnings("resource")	
+		Scanner input = new Scanner(System.in);
+		keyword = input.next();
+		
 		
 		return keyword;
 	}
