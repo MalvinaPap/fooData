@@ -1,42 +1,91 @@
-import java.io.IOException;
+
+import java.sql.*;
+import java.io.*;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Keywords {
 
-	Hashmap<Integer, URL> urls = new Hashmap<Integer, URL>();
+	HashMap<Integer, URL> urls = new HashMap<Integer, URL>();
+	HashMap<Integer, ArrayList<String> > keywords = new HashMap<Integer, ArrayList<String> >();
 
-	HTMLreader crawling_html = new HTMLreader;
+	Crawling crawl = new Crawling();
 
-	Hashmap<Integer, URL> keywords = new Hashmap<Integer, URL>();
+	public HashMap<Integer, ArrayList<String>> findKeywords() throws SQLException, Exception {
 
-	public HashMap<Integer, URL> findKeywords(String url) {
+		urls = crawl.getDatabase();
+		HTMLreader crawling_html = new HTMLreader();
+		String html = new String();
 
-		ArrayList listOfKeys = new ArrayList;
-
-		for (i = 0; i <= urls.size(); i++) {
+		for (int i = 0; i <= urls.size(); i++) {
 
 			html = crawling_html.readURL(urls.get(i));
+			html = html.replace('"', '\"');
+			html = html.replace("\\s","");
 
-			if (html.toLowerCase().startsWith("<meta ")) {
+			String lines[] = html.split("\\r?\\n");
+			ArrayList<String> arrayWords = new ArrayList<String>();
 
-				if (html.toLowerCase().matches("name="description" content=") ||
-					html.toLowerCase().matches("name="description" content=") ||
-					html.toLowerCase().matches("name="keywords" content=") {
+			ArrayList<String> newwordsList = new ArrayList<String>();
 
-					keywords = ;  /* åäù ðáéñíïõìå ôá keywords áðï ôá strings
-									 ðïõ åðáëçèåïõí ôéò ðáñáðáíù óõíèçêåò */
+			for (int y=0; y >= lines.length; y++) {
 
-				} /* end if */
+				if (lines[y].startsWith("<meta name=\"keywords\" content=")) {
 
-			} /* end if */
+					/* FIRST META TAG: KEYWORDS */
+					String[] getLine = lines[y].substring(28).split("\"");
 
-			keywords.put(i, keywords);
-	    } /* end for */
+					String[] words = getLine[0].split(",");
+					newwordsList.addAll(Arrays.asList(words));
 
+					arrayWords.addAll(newwordsList);
+					newwordsList.clear();
+
+				}
+
+				if (lines[y].startsWith("<meta name=\"title\" content=")) {
+
+					/* SECOND META TAG: TITLE */
+					String[] getLine = lines[y].substring(7).split("\"");
+
+					String[] words = getLine[0].split(",");
+					newwordsList.addAll(Arrays.asList(words));
+
+					arrayWords.addAll(newwordsList);
+					newwordsList.clear();
+
+				}
+				if (lines[y].startsWith("<meta name=\"description\" content=")) {
+
+					/* THIRD META TAG: DESCRIPTION */
+					String[] getLine = lines[y].substring(34).split("\"");
+
+					String[] words = getLine[0].split(",");
+					newwordsList.addAll(Arrays.asList(words));
+
+					arrayWords.addAll(newwordsList);
+					newwordsList.clear();
+				}
+
+				if (lines[y].startsWith("<title>")) {
+
+					/* FORTH TAG: TITLE */
+					String[] getLine = lines[y].substring(7).split("\"");
+
+					String[] words = getLine[0].split(",");
+					newwordsList.addAll(Arrays.asList(words));
+
+					arrayWords.addAll(newwordsList);
+					newwordsList.clear();
+				}
+
+				keywords.put(i, arrayWords);
+
+			} /* end for */
+
+		}
 	    return keywords;
 
-   } /* end findKeywords() */
+	} /* end findKeywords() */
 
 } /* end Keywords */
