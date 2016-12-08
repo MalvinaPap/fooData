@@ -1,12 +1,14 @@
+package search_engine;
 import java.net.*;
 import java.io.*;
+import java.net.URL;
 import java.util.Scanner;
 import java.util.HashMap;
 
 public class HTMLreader {
 
 
-    public String readURL(String url) throws Exception {
+    public String readURL(URL url) throws Exception {
 
 			String htmlcontent = null;
 			URLConnection con = null;
