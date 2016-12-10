@@ -2,14 +2,10 @@
 package search_engine;
 
 import java.util.HashMap;
-import java.util.List;
 import java.net.URL;
-import java.net.MalformedURLException;
-import java.net.URLConnection;
-import java.util.ArrayList; 
+import java.net.MalformedURLException; 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,7 +31,7 @@ public class Crawling {
 		try (Connection connection = DriverManager.getConnection(url, username, password)) {
 		    System.out.println("Database connected!");
 		    Statement stmt = null;
-		    String query = "SELECT * FROM foodatab.urls u;";
+		    String query = "SELECT * FROM urls u;";
 		    HashMap<Integer,URL> urls = new HashMap<>();
 		    try {
 		        stmt = connection.createStatement();
@@ -43,7 +39,7 @@ public class Crawling {
 		        URL url1;
 	        	 while (rs.next()) {
 	        		 
-	        		 String a = rs.getString("urls");
+	        		 String a = rs.getString("url");
 	        		 url1 = new URL(a);
 	        		 urls.put(id,url1);
 	        		 ++id;
@@ -67,20 +63,6 @@ public class Crawling {
 	
 	
 	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	public static HashMap<Integer,String> crawlHtml() {                 /*Η μέθοδος θα χειρίζεται τον crawler και θα επιστρεφει τα αποτελέσματα του σε μορφή */
-		HashMap<Integer,String> map = new HashMap<>();						/*hashmap */
-		return map;
-	}
-
 	
 	
 	

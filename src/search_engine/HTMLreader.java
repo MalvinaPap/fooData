@@ -1,27 +1,30 @@
 package search_engine;
+
 import java.net.*;
 import java.io.*;
-import java.net.URL;
-import java.util.Scanner;
-import java.util.HashMap;
+
 
 public class HTMLreader {
 
+    
+        public static String getText(URL url) throws Exception {
+            URLConnection connection = url.openConnection();
+            BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(
+                                        connection.getInputStream()));
 
-    public String readURL(URL url) throws Exception {
+            StringBuilder response = new StringBuilder();
+            String inputLine;
 
-			String htmlcontent = null;
-			URLConnection con = null;
+            while ((inputLine = in.readLine()) != null) 
+                response.append(inputLine);
 
-			try {
-				Scanner scanner = new Scanner(con.getInputStream());
-				scanner.useDelimiter("\\Z");
-				htmlcontent = scanner.next();
-			}catch ( Exception ex ) {
-				ex.printStackTrace();
-			}
+            in.close();
 
-			return htmlcontent;
-    }
+            return response.toString().substring(0,3000);
+        }
+
+        
+    
 
 }
