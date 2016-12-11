@@ -25,13 +25,17 @@ public class Keywords {
 			html = html.replaceAll("\\s+", "");
 
 			String lines[] = html.split("/>");
+			
+																//for (int w=0;w<lines.length;w++) {					/* TEST */
+																			//System.out.println(lines[w]);      
+																//} 
+																//System.out.println();
+			
 			ArrayList<String> arrayWords = new ArrayList<String>();
 
 			ArrayList<String> newwordsList = new ArrayList<String>();
 			
-			/*for (int w=0;w<lines.length;w++) {
-				System.out.println(lines[w]);
-			}*/
+			
 
 			for (int y=0; y < lines.length; y++) {
 			
@@ -40,62 +44,79 @@ public class Keywords {
 					
 
 					/* FIRST META TAG: KEYWORDS */
-					String[] getLine = lines[y].substring(28).split("€");
+					String[] getLine= lines[y].substring(28).split("€");
+					
+					
+					//System.out.println(getLine[1]);               /* TEST */
 
-					String[] words = getLine[0].split(",");
-					for (int w=0;w < words.length;w++) {
-						System.out.println(words[w]);
-					}
+					String[] words = getLine[1].split(",");
+					
 					
 					newwordsList.addAll(Arrays.asList(words));
 		
 					arrayWords.addAll(newwordsList);
-					newwordsList.clear();
 					
+					
+					//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
+						//System.out.println(arrayWords.get(g));
+					//}
+					
+					newwordsList.clear();
 					
 
 				}
 
-				/*if (lines[y].startsWith("<meta name=€title€ content=")) {
+				if (lines[y].startsWith("<metaname=€title€content=")) {
 
-					 SECOND META TAG: TITLE 
-					String[] getLine = lines[y].substring(7).split("€");
+					/* SECOND META TAG: TITLE */
+					String[] getLine = lines[y].substring(25).split("€");
 
-					String[] words = getLine[0].split(",");
+
+					String[] words = getLine[1].split(",");
 					newwordsList.addAll(Arrays.asList(words));
 
 					arrayWords.addAll(newwordsList);
 					newwordsList.clear();
+					
+					//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
+						//System.out.println(arrayWords.get(g));
+					//}
 
 				}
-				if (lines[y].startsWith("<meta name=\"description\" content=")) {
+				if (lines[y].startsWith("<metaname=€description€content=")) {
 
-					 THIRD META TAG: DESCRIPTION 
-					String[] getLine = lines[y].substring(34).split("€");
+					/*THIRD META TAG: DESCRIPTION */
+					String[] getLine = lines[y].substring(31).split("€");
 
-					String[] words = getLine[0].split(",");
+					String[] words = getLine[1].split(",");
 					newwordsList.addAll(Arrays.asList(words));
 
 					arrayWords.addAll(newwordsList);
 					newwordsList.clear();
+					
+					//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
+						//System.out.println(arrayWords.get(g));
+				    //}
 				}
 
 				if (lines[y].startsWith("<title>")) {
 
-					 FORTH TAG: TITLE 
+					 /*FORTH TAG: TITLE */
 					String[] getLine = lines[y].substring(7).split("€");
 
-					String[] words = getLine[0].split(",");
+					String[] words = getLine[1].split(",");
 					newwordsList.addAll(Arrays.asList(words));
 
 					arrayWords.addAll(newwordsList);
 					newwordsList.clear();
-				} */
+				} 
 
 
 			} /* end for */
 			
 			keywords.put(i, arrayWords);
+			
+			
 
 		}/* end for */
 		

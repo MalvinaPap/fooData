@@ -13,7 +13,7 @@ public class Keywords_test {
 	
 			HashMap<Integer, ArrayList<String> > keywords = keys.findKeywords();
 			for (int i=1 ; i<=keywords.size(); i++) {
-				for (int j=0 ; j<keywords.get(j).size(); j++) {
+				for (int j=0 ; j<keywords.get(i).size(); j++) {
 					System.out.println(keywords.get(i).get(j));
 				}
 			}

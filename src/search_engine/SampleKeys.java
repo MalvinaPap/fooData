@@ -1,4 +1,4 @@
-//package index;
+package search_engine;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class SampleKeys {
 
 		return hash;
 
-		// ΠΡΟΣΟΧΗ!! κάθε φορά που καλείται η μέθοδος γεμιίζει πάλι το arraylist
+		// οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½!! οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½ arraylist
 	}
 
 	public HashMap<Integer, ArrayList<String>> getKeywords() {

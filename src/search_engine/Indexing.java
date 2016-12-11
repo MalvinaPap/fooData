@@ -1,4 +1,4 @@
-//package index;
+package search_engine;
 
 import java.util.HashMap;
 import java.util.ArrayList;
