@@ -1,19 +1,18 @@
 package search_engine;
 
 import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Indexing {
 
-	SampleKeys kwd = new SampleKeys();
 
-	HashMap<Integer, ArrayList<String>> hash = kwd.findKeywords();
+	public HashMap<String, ArrayList<Integer>> getTable() throws SQLException, Exception {
+		
+		Keywords kwd = new Keywords();
 
-	HashMap<String, ArrayList<Integer>> index = new HashMap<String, ArrayList<Integer>>();
-
-
-
-	public HashMap<String, ArrayList<Integer>> getTable() {
+		HashMap<Integer, ArrayList<String>> hash = kwd.findKeywords();
+	    HashMap<String, ArrayList<Integer>> index = new HashMap<String, ArrayList<Integer>>();
 
 		int i = 1;
 		int end = hash.size();
@@ -21,7 +20,7 @@ public class Indexing {
 		ArrayList<String> array = new ArrayList<String>();
 
 
-		while(i <= end) {  //end=3
+		while(i <= end) {  
 
 			array = hash.get(i);
 

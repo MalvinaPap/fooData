@@ -4,15 +4,14 @@ import java.sql.*;
 import java.net.URL;
 import java.util.*;
 
+
 public class Keywords {
-
-	HashMap<Integer, URL> urls = new HashMap<Integer, URL>();
-	HashMap<Integer, ArrayList<String> > keywords = new HashMap<Integer, ArrayList<String> >();
-
 	
-	 
 	
-	public HashMap<Integer, ArrayList<String>> findKeywords() throws SQLException, Exception {
+	public  HashMap<Integer, ArrayList<String>> findKeywords() throws SQLException, Exception {
+		
+		HashMap<Integer, URL> urls = new HashMap<Integer, URL>();
+		HashMap<Integer, ArrayList<String> > keywords = new HashMap<Integer, ArrayList<String> >();
 
 		urls = Crawling.getDatabase();
 		
@@ -26,10 +25,17 @@ public class Keywords {
 
 			String lines[] = html.split("/>");
 			
-																//for (int w=0;w<lines.length;w++) {					/* TEST */
-																			//System.out.println(lines[w]);      
-																//} 
-																//System.out.println();
+			
+			
+			
+			
+			//for (int w=0;w<lines.length;w++) {					/* TEST */
+					//System.out.println(lines[w]);      
+			//} 
+			//System.out.println();
+			
+			
+			
 			
 			ArrayList<String> arrayWords = new ArrayList<String>();
 
