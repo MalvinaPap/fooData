@@ -17,13 +17,22 @@ To use it you must have a MySql database and change the connection credentials i
 
  
    Authors:
+   
 Ioanna Giftaki
+
 Panagiota Dimitropoulou
+
 Maria Moula
+
 Vasiliki Mpei
+
 Maria-Malevi Papadaki
+
 Elena Triantafullou
+
 Aristea Troullinou
+
 Ioanna Foti
+
 
 
