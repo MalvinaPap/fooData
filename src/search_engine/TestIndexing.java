@@ -16,6 +16,8 @@ public class TestIndexing {
 		} catch (NullPointerException e) {
 			System.out.println("no filled hasmap");
 
+		} catch (Exception e) {
+			System.out.println("");
 		}
 
 
