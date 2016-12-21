@@ -21,9 +21,9 @@ public class Crawling {
 	
 	public static HashMap<Integer,URL> getDatabase() throws SQLException, MalformedURLException {
 		
-		String url = "jdbc:mysql://localhost:3306/foodatab";
-		String username = "root";
-		String password = "123456789";
+		String url = "jdbc:mysql://195.251.249.131:3306/ismgroup37";
+		String username = "ismgroup37";
+		String password = "dxodtb";
 		int id = 1;
 
 		System.out.println("Connecting database...");
