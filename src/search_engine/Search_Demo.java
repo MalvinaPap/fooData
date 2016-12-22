@@ -7,8 +7,13 @@ import java.util.HashMap;
 import java.net.MalformedURLException;
 
 public class Search_Demo {
-	
-public static void main(String[] args) throws SQLException, MalformedURLException,  Exception {
+	/**Main method creates the index and does the searching
+	 * @param args
+	 * @throws SQLException
+	 * @throws MalformedURLException
+	 * @throws Exception
+	 */
+	public static void main(String[] args) throws SQLException, MalformedURLException,  Exception {
 		
 	    Indexing in = new Indexing();
 	    HashMap<String, ArrayList<Integer>> index = in.getTable();

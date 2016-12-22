@@ -11,14 +11,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-
 public class Crawling {
 
-/*constructor*/	
+    /**constructor*/	
 	public Crawling() {
 	}
 	
-	
+	/** Gets the links from mySql database and puts them in a Hashmap
+	 * @return HashMap<Integer,URL>
+	 * @throws SQLException
+	 * @throws MalformedURLException
+	 */
 	public static HashMap<Integer,URL> getDatabase() throws SQLException, MalformedURLException {
 		
 		String url = "jdbc:mysql://195.251.249.131:3306/ismgroup37";
@@ -60,43 +63,6 @@ public class Crawling {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	public static HashMap<Integer,URL> returnUrls() throws MalformedURLException   {       /*not permanent, just a test method*/
-		
-		
-		HashMap<Integer,URL> map = new HashMap<>();
-		try {
-			URL url1 = new URL("http://www.aeoliashop.gr/category/oil/");
-			URL url2 = new URL("http://www.aeoliashop.gr/category/oil/page/2/");
-			URL url3 = new URL("http://www.aeoliashop.gr/category/oil/page/3/");
-			URL url4 = new URL("http://www.aeoliashop.gr/category/oil/page/4/");
-		
-			map.put(1,url1);
-			map.put(2,url2);
-			map.put(3,url3);
-			map.put(4,url4);
-		
-		} catch (MalformedURLException e) {
-			System.out.println("unproper URL insertion");
-		} finally {} 
-		
-		
-		
-		return map;
-		
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

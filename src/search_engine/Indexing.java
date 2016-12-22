@@ -6,7 +6,12 @@ import java.util.ArrayList;
 
 public class Indexing {
 
-
+    /** Creates the index that matches keywords with the urls they are found
+     * 
+     * @return HashMap<String, ArrayList<Integer>>
+     * @throws SQLException
+     * @throws Exception
+     */
 	public HashMap<String, ArrayList<Integer>> getTable() throws SQLException, Exception {
 		
 		Keywords kwd = new Keywords();
