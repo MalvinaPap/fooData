@@ -56,7 +56,7 @@ public class Keywords {
 			for (int y=0; y < lines.length; y++) {
 			
 				
-				if ((lines[y].startsWith("<metaname=€keywords€content="))||(lines[y].startsWith("<metaname=€Keywords€content="))||(lines[y].startsWith("<metaname=€KEYWORDS€content="))) {
+				if (lines[y].startsWith("<metaname=€keywords€content=")) {
 					
 					System.out.println("into keywords' if"); 
 					/* FIRST META TAG: KEYWORDS */

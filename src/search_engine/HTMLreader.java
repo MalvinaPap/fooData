@@ -6,7 +6,7 @@ import java.io.*;
 
 public class HTMLreader {
 
-        /**Gets a URL and returns the first 2500 characters 
+        /**Gets a URL and returns the first 2500 characters
          * of its HTML code as a String
          * @param url
          * @return String
@@ -21,15 +21,15 @@ public class HTMLreader {
             StringBuilder response = new StringBuilder();
             String inputLine;
 
-            while ((inputLine = in.readLine()) != null) 
+            while ((inputLine = in.readLine()) != null)
                 response.append(inputLine);
 
             in.close();
 
-            return response.toString().substring(0,2500);
+            return response.toString().substring(0,2500).toLowerCase();
         }
 
-        
-    
+
+
 
 }

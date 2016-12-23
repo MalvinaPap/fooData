@@ -22,11 +22,11 @@ public class Search_Demo {
 	    Inputs userInput = new Inputs();
 		String keyword= userInput.input();
 		int id=0;
-		
-		while (!keyword.equals("end")){
-			if(index.containsKey(keyword)){
-				for (int j=0; j<index.get(keyword).size();j++) {
-					id=index.get(keyword).get(j);
+		String key=keyword.toLowerCase();
+		while (!key.equals("end")){
+			if(index.containsKey(key)){
+				for (int j=0; j<index.get(key).size();j++) {
+					id=index.get(key).get(j);
 					System.out.println(urls.get(id));
 				}
 	
@@ -34,6 +34,7 @@ public class Search_Demo {
 				System.out.println("The keyword you inserted does not match");
 			}
 			keyword = userInput.input();
+			key=keyword.toLowerCase();
 		
 		}
 		
