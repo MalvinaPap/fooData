@@ -28,15 +28,16 @@ public class Keywords {
 		String html = new String();
 
 		for (int i = 1; i <= urls.size(); i++) {
-
+			//System.out.println("into loop");
 			html = HTMLreader.getText(urls.get(i)); 
 			
 			
 			
-			System.out.println("\n");
+			//System.out.println("got html");
 			
 			html = html.replace('"', '€');
-			html = html.replaceAll("\\s+", "");
+			html = html.replace('|', ',');
+			html = html.replaceAll("\\s+", ",");
 
 			String lines[] = html.split(">");   
 		
@@ -56,14 +57,14 @@ public class Keywords {
 			for (int y=0; y < lines.length; y++) {
 			
 				
-				if (lines[y].startsWith("<metaname=€keywords€content=")) {
+				if (lines[y].startsWith("<meta,name=€keywords€,content=")||lines[y].startsWith(",<meta,name=€keywords€,content=")) {
 					
-					System.out.println("into keywords' if"); 
+					//System.out.println("into keywords' if"); 
 					/* FIRST META TAG: KEYWORDS */
 					String[] getLine= lines[y].substring(28).split("€");
 					
 					
-					System.out.println(getLine[1]);               /* TEST */
+					//System.out.println(getLine[1]);               /* TEST */
 
 					String[] words = getLine[1].split(",");
 					
@@ -82,7 +83,7 @@ public class Keywords {
 
 				}
 
-				if (lines[y].startsWith("<metaname=€title€content=")) {
+				if (lines[y].startsWith("<meta,name=€title€,content=")||lines[y].startsWith(",<meta,name=€title€,content=")) {
 
 					/* SECOND META TAG: TITLE */
 					String[] getLine = lines[y].substring(25).split("€");
@@ -99,7 +100,7 @@ public class Keywords {
 					//}
 
 				}
-				if (lines[y].startsWith("<metaname=€description€content=")) {
+				if (lines[y].startsWith("<meta,name=€description€,content=")||lines[y].startsWith(",<meta,name=€description€,content=")) {
 
 					/*THIRD META TAG: DESCRIPTION */
 					String[] getLine = lines[y].substring(31).split("€");

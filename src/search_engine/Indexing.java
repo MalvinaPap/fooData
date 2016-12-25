@@ -30,9 +30,12 @@ public class Indexing {
 			array = hash.get(i);
 
 			for (int x = 0; x < array.size(); x++) {
+				if (array.get(x).equals("και")||array.get(x).equals("ο")||array.get(x).equals("η")||array.get(x).equals("το")||array.get(x).equals("για")) {
+					continue;
+				}
 				ArrayList<Integer> ids = new ArrayList<Integer>();
 
-				if (index.containsKey(array.get(x))) {
+				if (index.containsKey(array.get(x))) { /*εδωωω*/
 					index.get(array.get(x)).add(i);
 				} else {
 					if (ids.contains(i)) {
