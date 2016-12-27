@@ -8,7 +8,7 @@ FooData search engine works as follows: the program gets a the links from the da
 collects keywords from the metatag areas description, title and keywords. After that it creates an index containing the keywords
 and the urls where they were found. The user can write a word and the engine searches into the index to find out if it exists.
 	
-To use it you must have a MySql database and change the connection credentials in class Crawling, to your own.
+To use it you must have a MySql database and change the connection credentials in class Crawling, by your own.
 
  Sites searched at the moment:
 
