@@ -35,7 +35,7 @@ public class Keywords {
 			
 			//System.out.println("got html");
 			
-			html = html.replace('"', '€');
+			html = html.replace('"','\u20ac');
 			html = html.replace('|', ',');
 			html = html.replaceAll("\\s+", ",");
 
