@@ -35,8 +35,10 @@ public class Indexing {
 				}
 				ArrayList<Integer> ids = new ArrayList<Integer>();
 
-				if (index.containsKey(array.get(x))) { /*εδωωω*/
-					index.get(array.get(x)).add(i);
+				if (index.containsKey(array.get(x))) {
+					if (!index.get(array.get(x)).contains(i)) {
+						index.get(array.get(x)).add(i);
+					}
 				} else {
 					if (ids.contains(i)) {
 						index.put(array.get(x), ids);
