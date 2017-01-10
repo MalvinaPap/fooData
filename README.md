@@ -13,7 +13,7 @@ This project is built using Maven and JUnit testing.
 ##How to use it:
 
 import the project and the included jar file into eclipse, convert to maven project,build and run class Search_Demo.
-alternative: open cmd-write java -jar Search_Demo.jar
+alternative: open cmd-write java -jar fooData_Search.jar
 	
  
    *Authors:*
