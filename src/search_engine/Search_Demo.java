@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.net.MalformedURLException;
 
 public class Search_Demo {
-	/**Main method creates the index and does the searching
+	/**Main method:requires user input, creates the index and does the searching into it
 	 * @param args
 	 * @throws SQLException
 	 * @throws MalformedURLException
@@ -18,13 +18,15 @@ public class Search_Demo {
 	    Indexing in = new Indexing();
 	    HashMap<String, ArrayList<Integer>> index = in.getTable();
 	    HashMap<Integer,URL> urls = Crawling.getDatabase();
-	
+	    //program requires user input
 	    Inputs userInput = new Inputs();
 		String keyword= userInput.input();
 		int id=0;
+		//every word in the index is into Lower case so input is also converted
 		String key=keyword.toLowerCase();
 		while (!key.equals("end")){
 			if(index.containsKey(key)){
+				//print all the links where the users' input is found
 				for (int j=0; j<index.get(key).size();j++) {
 					id=index.get(key).get(j);
 					System.out.println(urls.get(id));
