@@ -25,7 +25,7 @@ public class HTMLreader {
                 response.append(inputLine);
 
             in.close();
-
+            //to Lower case-stemming for capital and non-capital letters
             return response.toString().substring(0,2500).toLowerCase();
         }
 
