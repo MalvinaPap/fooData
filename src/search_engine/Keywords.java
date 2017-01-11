@@ -18,22 +18,14 @@ public class Keywords {
 		
 		HashMap<Integer, URL> urls = new HashMap<Integer, URL>();
 		HashMap<Integer, ArrayList<String> > keywords = new HashMap<Integer, ArrayList<String> >();
-
+                //Gets the Hashmap with the links created in class Crawling
 		urls = Crawling.getDatabase();
-		
-		//for (int i = 1; i <= urls.size(); i++) {  
-			//System.out.println(urls.get(i));
-		//}
 		
 		String html = new String();
 
 		for (int i = 1; i <= urls.size(); i++) {
-			//System.out.println("into loop");
+			//use method getText from class HTMLreader in order to get HTML code of the link as a String
 			html = HTMLreader.getText(urls.get(i)); 
-			
-			
-			
-			//System.out.println("got html");
 			
 			html = html.replace('"','\u20ac');
 			html = html.replace('|', ',');
@@ -41,12 +33,6 @@ public class Keywords {
 
 			String lines[] = html.split(">");   
 		
-			
-			
-			//for (int w=0;w<lines.length;w++) {					
-					//System.out.println(lines[w]);      
-			//} 
-			//System.out.println();
 			
 			ArrayList<String> arrayWords = new ArrayList<String>();
 
@@ -59,28 +45,17 @@ public class Keywords {
 				
 				if (lines[y].startsWith("<meta,name=€keywords€,content=")||lines[y].startsWith(",<meta,name=€keywords€,content=")) {
 					
-					//System.out.println("into keywords' if"); 
 					/* FIRST META TAG: KEYWORDS */
 					String[] getLine= lines[y].substring(28).split("€");
-					
-					
-					//System.out.println(getLine[1]);               /* TEST */
 
 					String[] words = getLine[1].split(",");
-					
 					
 					newwordsList.addAll(Arrays.asList(words));
 		
 					arrayWords.addAll(newwordsList);
 					
-					
-					//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
-						//System.out.println(arrayWords.get(g));
-					//}
-					
 					newwordsList.clear();
 					
-
 				}
 
 				if (lines[y].startsWith("<meta,name=€title€,content=")||lines[y].startsWith(",<meta,name=€title€,content=")) {
@@ -88,16 +63,11 @@ public class Keywords {
 					/* SECOND META TAG: TITLE */
 					String[] getLine = lines[y].substring(25).split("€");
 
-
 					String[] words = getLine[1].split(",");
 					newwordsList.addAll(Arrays.asList(words));
 
 					arrayWords.addAll(newwordsList);
 					newwordsList.clear();
-					
-					//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
-						//System.out.println(arrayWords.get(g));
-					//}
 
 				}
 				if (lines[y].startsWith("<meta,name=€description€,content=")||lines[y].startsWith(",<meta,name=€description€,content=")) {
@@ -116,15 +86,9 @@ public class Keywords {
 				
 			} /* end for */
 			
-			//for (int g=0; g < arrayWords.size() ;g++) {			/* TEST */
-				//System.out.println(arrayWords.get(g));
-		    //}
-			
 			keywords.put(i, arrayWords);
 			
-			
-
-			}/* end for */
+	    }/* end for */
 		
 	    return keywords;
 
