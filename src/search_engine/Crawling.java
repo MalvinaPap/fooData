@@ -17,7 +17,8 @@ public class Crawling {
 	public Crawling() {
 	}
 	
-	/** Gets the links from mySql database and puts them in a Hashmap
+	/** Gets a number of links to webpages from a MySql database and puts them in a Hashmap in order to get
+	 * used by the program
 	 * @return HashMap<Integer,URL>
 	 * @throws SQLException
 	 * @throws MalformedURLException
@@ -29,11 +30,12 @@ public class Crawling {
 		String password = "dxodtb";
 		int id = 1;
 
-		System.out.println("Connecting database...");
+		//Establish connection to MySql Database
 
 		try (Connection connection = DriverManager.getConnection(url, username, password)) {
-		    System.out.println("Database connected!");
+		    
 		    Statement stmt = null;
+	            //Get all the urls available in the database
 		    String query = "SELECT * FROM urls u;";
 		    HashMap<Integer,URL> urls = new HashMap<>();
 		    try {
@@ -44,6 +46,7 @@ public class Crawling {
 	        		 
 	        		 String a = rs.getString("url");
 	        		 url1 = new URL(a);
+				 //store link and its' id in a Hashmap
 	        		 urls.put(id,url1);
 	        		 ++id;
 			        }
