@@ -20,19 +20,12 @@ alternative: open cmd-write java -jar fooData_Search.jar
    *Authors:*
    
 Ioanna Giftaki
-
 Panagiota Dimitropoulou
-
 Maria Moula
-
 Vasiliki Bei
-
 Maria-Malevi Papadaki
-
 Elena Triantafyllou
-
 Aristea Troullinou
-
 Ioanna Foti
 
 
